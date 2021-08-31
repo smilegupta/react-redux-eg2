@@ -25,3 +25,10 @@ export const fetchProducts = () =>
     const response = await fakestoreapi.get("/products");
     dispatch({type: ActionTypes.FETCH_PRODUCT, payload:response.data})
 }
+
+export const fetchProduct = (id) => 
+  async (dispatch ) => {
+    const response = await fakestoreapi.get(`/products/${id}`);
+    dispatch({type: ActionTypes.SELECTED_PRODUCT, payload:response.data})
+}
+
