@@ -1,4 +1,5 @@
 import { ActionTypes } from "../constants/action-types";
+import fakestoreapi from "../../apis/fakestoreapi";
 
 export const setProducts = (products) => {
   return {
@@ -18,3 +19,9 @@ export const removeSelectedProduct = () => {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
+
+export const fetchProducts = () => 
+  async (dispatch ) => {
+    const response = await fakestoreapi.get("/products");
+    dispatch({type: ActionTypes.FETCH_PRODUCT, payload:response.data})
+}
